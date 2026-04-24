@@ -11,6 +11,10 @@ const {
   getNotesByStatus,
   getNoteSummary,
   filterNotes,
+  getPinnedNotes,
+  filterByCategory,
+  filterByDateRange,
+  paginateNotes
 } = require("../controllers/note.controller");
 
 // 🔥 ROUTE PARAMS FIRST
