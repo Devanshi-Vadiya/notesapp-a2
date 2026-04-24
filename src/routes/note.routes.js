@@ -21,6 +21,7 @@ router.get("/status/:isPinned", getNotesByStatus);
 router.get("/filter", filterNotes);
 router.get("/filter/pinned", getPinnedNotes);
 router.get("/filter/category", filterByCategory);
+router.get("/filter/date-range", filterByDateRange);
 
 // 🔥 SUMMARY (before :id)
 router.get("/:id/summary", getNoteSummary);
