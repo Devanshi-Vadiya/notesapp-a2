@@ -5,5 +5,5 @@ const { createNote } = require("../controllers/note.controller");
 
 router.post("/", createNote);
 router.get("/", getAllNotes);
-
+router.get("/:id", getNoteById);
 module.exports = router;
