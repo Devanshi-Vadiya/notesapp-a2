@@ -23,6 +23,9 @@ router.get("/filter/pinned", getPinnedNotes);
 router.get("/filter/category", filterByCategory);
 router.get("/filter/date-range", filterByDateRange);
 
+//pagination
+router.get("/paginate", paginateNotes);
+
 // 🔥 SUMMARY (before :id)
 router.get("/:id/summary", getNoteSummary);
 
