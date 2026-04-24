@@ -7,5 +7,6 @@ router.post("/", createNote);
 router.get("/", getAllNotes);
 router.get("/:id", getNoteById);
 router.patch("/:id", updateNote);
+router.delete("/:id", deleteNote);
 
 module.exports = router;
