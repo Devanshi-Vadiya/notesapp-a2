@@ -446,6 +446,47 @@ const paginateNotes = async (req, res) => {
   }
 };
 
+const paginateByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const filter = { category };
+
+    const total = await Note.countDocuments(filter);
+
+    const notes = await Note.find(filter)
+      .skip(skip)
+      .limit(limit);
+
+    const totalPages = Math.ceil(total / limit);
+
+    res.status(200).json({
+      success: true,
+      message: `Notes fetched for category: ${category}`,
+      data: notes,
+      pagination: {
+        total,
+        page,
+        limit,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createNote,
   getAllNotes,
@@ -459,5 +500,6 @@ module.exports = {
   getPinnedNotes,
   filterByCategory, 
   filterByDateRange,
-  paginateNotes
+  paginateNotes,
+  paginateByCategory
 };
