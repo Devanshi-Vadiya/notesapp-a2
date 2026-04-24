@@ -20,7 +20,7 @@ router.get("/status/:isPinned", getNotesByStatus);
 // 🔥 QUERY PARAM
 router.get("/filter", filterNotes);
 router.get("/filter/pinned", getPinnedNotes);
-
+router.get("/filter/category", filterByCategory);
 
 // 🔥 SUMMARY (before :id)
 router.get("/:id/summary", getNoteSummary);
