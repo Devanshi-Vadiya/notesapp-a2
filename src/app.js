@@ -1,13 +1,10 @@
 const express = require("express");
+const noteRoutes = require("./routes/note.routes");
 
 const app = express();
 
-// middleware
 app.use(express.json());
 
-// test route (optional)
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
+app.use("/api/notes", noteRoutes);
 
-module.exports = app;  
+module.exports = app;
